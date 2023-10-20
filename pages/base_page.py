@@ -1,4 +1,5 @@
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 from support.logger import logger
@@ -12,7 +13,7 @@ class Page:
         self.wait = WebDriverWait(self.driver, 10)
 
     def open_url(self, end_url=''):
-        url = f'https://soft.reelly.io/{end_url}'
+        url = f'https://soft.reelly.io{end_url}'
         self.driver.get(url)
         logger.info(f'Opening URL {url}')
         sleep(2)

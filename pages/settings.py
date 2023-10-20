@@ -10,4 +10,4 @@ class SettingsMenu(Page):
     CHANGE_PASS_BTN = (By.CSS_SELECTOR, 'a[href="/set-new-password"].page-setting-block.w-inline-block')
 
     def password_change(self):
-        self.click(*self.CHANGE_PASS_BTN)
+        self.wait_for_element_clickable_click(*self.CHANGE_PASS_BTN)

@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 from pages.base_page import Page
@@ -12,7 +13,7 @@ class MainPage(Page):
     CHANGE_NEW_PASS_BTN = (By.CSS_SELECTOR, 'a.submit-button-2.w-button')
 
     def click_settings(self):
-        self.click(*self.CLICK_SETTING_BTN)
+        self.wait_for_element_clickable_click(*self.CLICK_SETTING_BTN)
 
     def open_main(self):
         self.open_url()

@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 from pages.base_page import Page
@@ -19,10 +20,12 @@ class LoginPage(Page):
     def page_log_in(self):
         self.input_text('salavatpct33@gmail.com', *self.EMAIL_FIELD)
         self.input_text('$Sea314059', *self.PASSWORD_FIELD)
-        sleep(2)
-        self.click(*self.CONTINUE_BUTTON)
+        # sleep(2)
+        self.wait_for_element_clickable_click(*self.CONTINUE_BUTTON)
 
     def input_text_field(self):
         self.input_text('test', *self.ENTER_NEW_PASS)
         self.input_text('test', *self.REPEAT_PASS)
+        self.wait_for_element_appear(*self.ENTER_NEW_PASS)
+        self.wait_for_element_appear(*self.REPEAT_PASS)
 
