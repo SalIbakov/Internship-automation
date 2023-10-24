@@ -7,16 +7,22 @@ from app.application import Application
 from support.logger import logger
 
 
+# Allure terminal command:
+# behave -f allure_behave.formatter:AllureFormatter -o test_results/ features/tests/reelly_settings_password_change.feature
+# show allure results:
+# allure serve test_results/
+
+
 def browser_init(context):
-    # """
-    # :param context: Behave context
-    # """
-    # options = Options()
-    # driver_path = ChromeDriverManager().install()
-    # service = Service(driver_path)
-    # options.add_argument('--ignore-certificate-errors')
-    # service = Service(executable_path=r'C:\Users\Admin\Downloads\python-selenium-automation-main\internship-automation\chromedriver.exe')
-    # context.driver = webdriver.Chrome(service=service)
+    """
+    :param context: Behave context
+    """
+    options = Options()
+    driver_path = ChromeDriverManager().install()
+    service = Service(driver_path)
+    options.add_argument('--ignore-certificate-errors')
+    service = Service(executable_path=r'C:\Users\Admin\Downloads\python-selenium-automation-main\internship-automation\chromedriver.exe')
+    context.driver = webdriver.Chrome(service=service)
 
     # --- FIREFOX cross-browser test --- #
     # service = Service(executable_path=r'C:\Users\Admin\Downloads\python-selenium-automation-main\internship-automation\geckodriver.exe')
@@ -34,20 +40,20 @@ def browser_init(context):
     # )
 
     # === BROWSERSTACK === #
-    bs_user = 'sam_IxV6dH'
-    bs_key = 'SEFppxygx6bPRvBFpg6Z'
-    scenario_name = 'Reelly Settings Password Change'
-    url = f'https://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
-
-    options = Options()
-    bstack_options = {
-        'os': 'OS X',
-        'osVersion': 'Big Sur',
-        'browserName': 'Chrome',
-        'sessionName': scenario_name
-    }
-    options.set_capability('bstack:options', bstack_options)
-    context.driver = webdriver.Remote(command_executor=url, options=options)
+    # bs_user = 'sam_IxV6dH'
+    # bs_key = 'SEFppxygx6bPRvBFpg6Z'
+    # scenario_name = 'Reelly Settings Password Change'
+    # url = f'https://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
+    #
+    # options = Options()
+    # bstack_options = {
+    #     'os': 'OS X',
+    #     'osVersion': 'Big Sur',
+    #     'browserName': 'Chrome',
+    #     'sessionName': scenario_name
+    # }
+    # options.set_capability('bstack:options', bstack_options)
+    # context.driver = webdriver.Remote(command_executor=url, options=options)
 
     context.driver.maximize_window()
     context.driver.implicitly_wait(4)
