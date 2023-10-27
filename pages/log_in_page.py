@@ -21,7 +21,7 @@ class LoginPage(Page):
         self.input_text('salavatpct33@gmail.com', *self.EMAIL_FIELD)
         self.input_text('$Sea314059', *self.PASSWORD_FIELD)
         # sleep(2)
-        self.wait_for_element_clickable_click(*self.CONTINUE_BUTTON)
+        self.wait_for_element_clickable_click(self.CONTINUE_BUTTON)
 
     def input_text_field(self):
         self.input_text('test', *self.ENTER_NEW_PASS)

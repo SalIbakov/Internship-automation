@@ -26,9 +26,20 @@ def click_settings(context):
     context.app.main_page.click_settings()
 
 
+@then('Click on settings option in Mobile')
+def click_settings_mobile(context):
+    sleep(3)
+    context.app.main_page.click_settings_mobile()
+
+
 @then('Click on Change password option')
 def password_change(context):
     context.app.settings.password_change()
+
+
+@then('Click on Change password option in Mobile')
+def password_change_mobile(context):
+    context.app.settings.password_change_mobile()
 
 
 @then('Verify the right page opens')

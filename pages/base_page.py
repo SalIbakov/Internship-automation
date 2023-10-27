@@ -44,6 +44,7 @@ class Page:
         windows = self.driver.window_handles
         print(windows)
         return windows
+
     # old page return
 
     def switch_to_new_window(self):
@@ -72,12 +73,12 @@ class Page:
             message=f'Element did not appear: {locator}'
         )
 
-    def wait_for_element_clickable_click(self, *locator):
-            e = self.wait.until(
-                EC.element_to_be_clickable(locator),
-                message=f'Element not clickable: {locator}'
-            )
-            e.click()
+    def wait_for_element_clickable_click(self, locator):
+        e = self.wait.until(
+            EC.element_to_be_clickable(locator),
+            message=f'Element not clickable: {locator}'
+        )
+        e.click()
 
     def wait_for_element_disappear(self, *locator):
         self.wait.until(
@@ -98,9 +99,8 @@ class Page:
     def verify_partial_url(self, expected_part_of_url):
         self.wait.until(EC.url_contains(expected_part_of_url))
 
-    def verify_number_elements(self,number,*locator):
+    def verify_number_elements(self, number, *locator):
         number = int(number)
         elements_count = self.find_elements(*locator)
         assert len(elements_count) == number
         logger.info(f'Expected {number} links but got {len(elements_count)}')
-

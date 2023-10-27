@@ -11,9 +11,15 @@ class MainPage(Page):
     CLICK_SETTING_BTN = (By.CSS_SELECTOR, 'a[href="/settings"].menu-button-block.w-inline-block')
     # CLICK_SETTING_BTN = (By.CSS_SELECTOR, 'a[href="/settings"] div.menu-button-text')
     CHANGE_NEW_PASS_BTN = (By.CSS_SELECTOR, 'a.submit-button-2.w-button')
+    CLICK_SETTINGS_BTN_MOBILE = (By.CSS_SELECTOR, 'a[href="/settings"].menu-button-wrapper.w-inline-block')
 
     def click_settings(self):
-        self.wait_for_element_clickable_click(*self.CLICK_SETTING_BTN)
+        sleep(3)
+        self.wait_for_element_clickable_click(self.CLICK_SETTING_BTN)
+
+    def click_settings_mobile(self):
+        self.click(*self.CLICK_SETTINGS_BTN_MOBILE)
+        sleep(3)
 
     def open_main(self):
         self.open_url()

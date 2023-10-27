@@ -49,11 +49,30 @@ def browser_init(context):
     # bstack_options = {
     #     'os': 'OS X',
     #     'osVersion': 'Big Sur',
-    #     'browserName': 'Chrome',
+    #     'browserName': 'Safari', # or Chrome
     #     'sessionName': scenario_name
+    # }
+    # OR =>  Define the desired capabilities for mobile web testing:
+    # desired_caps = {
+    #     'browserName': 'iPhone',
+    #     'device': 'iPhone 11 Pro',
+    #     'realMobile': 'true',
+    #     'os_version': '14',
     # }
     # options.set_capability('bstack:options', bstack_options)
     # context.driver = webdriver.Remote(command_executor=url, options=options)
+
+    # --- Mobile Web Emulation --- #
+    mobile_emulation = {
+            "deviceName": "iPhone 12 Pro",
+            # "deviceMetrics": {"width": 390, "height": 844},
+            # "deviceName": "Pixel 5",
+            # "deviceMetrics": {"width": 393, "height": 851},
+     }
+
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_experimental_option("mobileEmulation", mobile_emulation)
+    context.driver = webdriver.Chrome(options=chrome_options)
 
     context.driver.maximize_window()
     context.driver.implicitly_wait(4)
