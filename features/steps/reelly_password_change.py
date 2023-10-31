@@ -3,11 +3,14 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.keys import Keys
 
 
 # EMAIL_FIELD = (By.ID, 'email-2')
 # PASSWORD_FIELD = (By.ID, 'field')
 # LOG_IN_BUTTON = (By.CSS_SELECTOR, 'a.login-button.w-button')
+# CHANGE_PASS_BTN_MOBILE = (By.CSS_SELECTOR, 'a[href="/set-new-password"].page-setting-block.w-inline-block')
 
 
 @given('Open Main Log In page')
@@ -39,7 +42,8 @@ def password_change(context):
 
 @then('Click on Change password option in Mobile')
 def password_change_mobile(context):
-    context.app.settings.password_change_mobile()
+    # context.driver.find_element(*CHANGE_PASS_BTN_MOBILE)
+    context.app.settings.password_change_mobile(context)
 
 
 @then('Verify the right page opens')

@@ -5,7 +5,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.chrome.options import Options
 from app.application import Application
 from support.logger import logger
-
+from selenium.webdriver.common.action_chains import ActionChains
 
 # Allure terminal command:
 # behave -f allure_behave.formatter:AllureFormatter -o test_results/ features/tests/reelly_settings_password_change.feature
@@ -63,6 +63,7 @@ def browser_init(context):
     # context.driver = webdriver.Remote(command_executor=url, options=options)
 
     # --- Mobile Web Emulation --- #
+
     mobile_emulation = {
             "deviceName": "iPhone 12 Pro",
             # "deviceMetrics": {"width": 390, "height": 844},

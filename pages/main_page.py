@@ -1,6 +1,8 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.keys import Keys
 from time import sleep
 from pages.base_page import Page
 from support.logger import logger
@@ -18,8 +20,8 @@ class MainPage(Page):
         self.wait_for_element_clickable_click(self.CLICK_SETTING_BTN)
 
     def click_settings_mobile(self):
-        self.click(*self.CLICK_SETTINGS_BTN_MOBILE)
         sleep(3)
+        self.wait_for_element_clickable_click(self.CLICK_SETTINGS_BTN_MOBILE)
 
     def open_main(self):
         self.open_url()

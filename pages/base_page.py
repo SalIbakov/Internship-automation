@@ -3,6 +3,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from time import sleep
 from support.logger import logger
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.keys import Keys
 
 
 class Page:
@@ -11,6 +13,8 @@ class Page:
         self.product_name = None
         self.driver = driver
         self.wait = WebDriverWait(self.driver, 10)
+        # self.driver = webdriver.Chrome()
+        self.actions = ActionChains(driver)
 
     def open_url(self, end_url=''):
         url = f'https://soft.reelly.io{end_url}'
